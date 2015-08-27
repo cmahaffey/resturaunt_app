@@ -1,1 +1,38 @@
-<h3>party specifics</h3>
+<h2>party specifics</h2>
+<h3>Table:<%=@party.table_name%></h3>
+<h3>People:<%=@party.num_persons%></h3>
+<h5>Server:<%=@party.server.name%></h5>
+<h5>Paid?  <%if @party.paid%>
+              Yes
+           <%else%>
+              No
+           <%end%>
+</h5>
+<h2>orders</h2>
+<ul>
+  <%@party.items.each do |item|%>
+    <li>
+      <%=item.food.name%><br>
+      <%unless item.description==' '%>
+        <ul><li><%=item.description%>
+        </li></ul>
+      <%end%>
+      <a href="/items/<%=item.id%>/edit">modify</a>
+      <form class="" action="/items/<%=item.id%>" method="post">
+        <input type="hidden" name="_method" value="delete">
+        <input type="submit" value="cancel">
+      </form>
+    </li>
+<%end%>
+</ul>
+<!-- <a href="/items">Get reciept</a> <br>-->
+
+
+
+<a href="/servers/<%=@party.server.id%>/parties">Back</a>
+<a href="/items/new?party=<%=@party.id%>">Order</a>
+<a href="/parties/<%=@party.id%>/edit"> Edit</a>
+<form class="" action="/parties/<%=@party.id%>" method="post">
+  <input type="hidden" name="_method" value="delete">
+  <input type="submit" value="Remove">
+</form>

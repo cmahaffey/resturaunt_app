@@ -2,17 +2,22 @@ require 'bundler'
 Bundler.require()
 
 require "./models/food"
-require "./models/order"
+require "./models/item"
 require "./models/party"
 require "./models/server"
+require "./models/chef"
 
 require "./controllers/application_controller"
-require "./controllers/foods_controller"
-require "./controllers/orders_controller"
-require "./controllers/parties_controller"
 require "./controllers/servers_controller"
+require "./controllers/foods_controllers"
+require "./controllers/items_controller"
+require "./controllers/parties_controller"
+require "./controllers/chefs_controller"
+require "./controllers/welcome_controller"
 
-map('/'){run ServersController}
+map('/'){run WelcomeController}
+map('/servers'){run ServersController}
 map('/parties'){run PartiesController}
-map('/orders'){run OrdersController}
-map('/food'){run FoodsController}
+map('/items'){run ItemsController}
+map('/foods'){run FoodsController}
+map('/chefs'){run ChefsController}

@@ -1,1 +1,12 @@
-<h3>show food</h3>
+<h2><%=@food.name%></h2>
+<h3>Price: <%=@food.price%></h3>
+<h4><%if @food.veg%>
+  Vegetarian
+<%end%>
+</h4>
+<a href="/foods">back to foods</a>
+<a href="/foods/<%=@food.id%>/edit">update</a>
+<form class="" action="/foods/<%=@food.id%>" method="post">
+  <input type="hidden" name="_method" value="delete">
+  <input type="submit" value="remove">
+</form>

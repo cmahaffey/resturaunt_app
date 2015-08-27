@@ -1,0 +1,38 @@
+<h3>edit Orders</h3>
+<form class="" action="/items/<%=@item.id%>" method="post">
+  <input type="hidden" name="_method" value="put">
+
+  <select class="" name="item[food_id]">
+    <option value="<%=@item.food_id%>">
+      <%=@item.food.name%>
+    </option>
+    <%Food.all.each do |food|%>
+      <%unless food.id==@item.food_id%>
+        <option value="<%=food.id%>">
+          <%=food.name%>
+        </option>
+      <%end%>
+    <%end%>
+  </select>
+
+  <select class="" name="item[party_id]">
+    <option value="<%=@item.party_id%>">
+      <%=@item.party.table_name%>
+    </option>
+    <%Party.all.each do |party|%>
+      <%unless party.id==@item.party_id%>
+        <option value="<%=party.id%>">
+          <%=party.table_name%>
+        </option>
+      <%end%>
+    <%end%>
+  </select>
+
+  <%if @item.description==' '%>
+    <input type="text" name="item[description]" placeholder="description">
+  <%else%>
+    <input type="text" name="item[description]"  value=<%=@item.description%>>
+  <%end%>
+
+  <input type="submit">
+</form>

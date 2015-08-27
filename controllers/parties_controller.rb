@@ -1,36 +1,43 @@
-class PartiesController < ApplicationController
+class PartiesController < ServersController
   get '/' do
-    @party= Party.all
-    erb :'partys/index'
+    @server=Server.find(params[:id])
+    @parties= Party.all
+    erb :'parties/index'
   end
 
   get '/new' do
-    erb :'partys/new'
+    if params[:waitstaff]
+      @server = Server.find(params[:waitstaff])
+    end
+    erb :'parties/new'
   end
 
   post '/' do
     party = Party.create(params[:party])
-    redirect "/partys/#{ party.id }"
+    redirect "/parties/#{ party.id }"
   end
 
   get '/:id' do
     @party = Party.find(params[:id])
-    erb :'/partys/show'
+    erb :'/parties/show'
   end
 
   get '/:id/edit' do
+    @servers=Server.all
     @party = Party.find(params[:id])
-    erb :'/partys/edit'
+    erb :'/parties/edit'
   end
 
   put '/:id' do
     party = Party.find(params[:id])
-    Party.update(params[:party])
-    redirect "/partys/#{party.id}"
+    party.update(params[:party])
+    redirect "/parties/#{party.id}"
   end
 
   # DESTROY
   delete '/:id' do
+    server=Party.find(params[:id]).server
     Party.delete(params[:id])
-    redirect '/partys'
+    redirect "/servers/#{server.id}/parties"
+  end
 end

@@ -1,0 +1,18 @@
+<h3>items</h3>
+<%total=0%>
+<%@items.map { |e| total+=e.food.price }%>
+<ul>
+  <%@items.each do |item|%>
+    <li><%=item.food.name%>  -  <%=item.food.price%></li>
+    <form class="" action="/items/<%=item.id%>" method="post">
+      <input type="hidden" name="_method" value="delete">
+      <input type="submit" value="cancel">
+
+    </form>
+  <%end%>
+</ul>
+<%=total%>
+
+<h5>25% tip: <%=total*1.25%></h5>
+<h5>20% tip: <%=total*1.2%></h5>
+<h5>15% tip: <%=total*1.15%></h5>

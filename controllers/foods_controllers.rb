@@ -1,7 +1,7 @@
 class FoodsController < ApplicationController
 
   get '/' do
-    @food= Food.all
+    @foods= Food.all
     erb :'foods/index'
   end
 
@@ -25,8 +25,9 @@ class FoodsController < ApplicationController
   end
 
   put '/:id' do
+    
     food = Food.find(params[:id])
-    Food.update(params[:food])
+    food.update(params[:food])
     redirect "/foods/#{food.id}"
   end
 

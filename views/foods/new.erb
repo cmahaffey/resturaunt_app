@@ -1,1 +1,8 @@
 <h3>new food</h3>
+<form  action="/foods" method="post">
+  <input type="text" name="food[name]" placeholder="food">
+  <!-- a boolean -->
+  <input type="checkbox" name="food[veg]" value="true">Vegetarian?
+  <input type="text" name="food[price]" placeholder="price">
+  <input type="submit">
+</form>

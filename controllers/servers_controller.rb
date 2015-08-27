@@ -1,6 +1,6 @@
 class ServersController < ApplicationController
   get '/' do
-    @Server= Server.all
+    @servers= Server.all
     erb :'servers/index'
   end
 
@@ -10,12 +10,13 @@ class ServersController < ApplicationController
 
   post '/' do
     server = Server.create(params[:server])
-    redirect "/servers/#{ server.id }"
+    @server=server
+    redirect "/servers/#{server.id}/parties"
   end
 
-  get '/:id' do
+  get '/:id/parties' do
     @server = Server.find(params[:id])
-    erb :'/servers/show'
+    erb :'parties/index'
   end
 
   get '/:id/edit' do
@@ -25,7 +26,7 @@ class ServersController < ApplicationController
 
   put '/:id' do
     server = Server.find(params[:id])
-    Server.update(params[:server])
+    server.update(params[:server])
     redirect "/servers/#{server.id}"
   end
 
@@ -33,4 +34,5 @@ class ServersController < ApplicationController
   delete '/:id' do
     Server.delete(params[:id])
     redirect '/servers'
+  end
 end

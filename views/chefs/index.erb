@@ -1,0 +1,11 @@
+<h3>For the Chefs</h3>
+<%@chefs.each do |item|%>
+  <p data-start-time=item.timestamps>
+    <%=item.food.name%> <%=item.description%>
+      <ul>
+        Table: <%=item.party.table_name%>
+      </ul>
+  </p>
+
+
+<%end%>

@@ -1,1 +1,19 @@
 <h3>Menu</h3>
+<ul>
+  <%@foods.each do |food|%>
+    <a href="/foods/<%=food.id%>"><li><%=food.name%>
+    <%if food.veg%>
+      V
+    <%end%>
+
+
+    <%=food.price%>
+    <form class="" action="/foods/<%=food.id%>" method="post">
+      <input type="hidden" name="_method" value="delete">
+      <input type="submit" value="delete">
+    </form>
+    </li></a>
+  <%end%>
+</ul>
+
+<a href="/foods/new"> add to the menu</a>

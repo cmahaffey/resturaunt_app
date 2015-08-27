@@ -1,1 +1,20 @@
  <h3>edit parties</h3>
+
+ <form class="" action="/parties/<%=@party.id%>" method="post">
+   <input type="hidden" name="_method" value="put">
+   <select class="" name="party[server_id]">
+     <% @servers.each do |server| %>
+       <option value="<%= server.id %>">
+         <%= server.name %>
+       </option>
+     <% end %>
+   </select>
+   <input type="text" name="party[table_name]" value="<%=@party.table_name%>">
+    <input type="number" name="party[num_persons]" value="<%=@party.num_persons%>">
+   <input type="hidden" name="party[paid]" value="false">
+   <input type="checkbox" name="party[paid]" value="true"
+     <%if @party.paid%> checked
+     <%end%>
+   > Paid?
+   <input type="submit" value="update">
+ </form>

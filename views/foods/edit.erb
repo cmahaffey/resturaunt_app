@@ -1,1 +1,12 @@
 <h3>edit food</h3>
+
+<form class="" action="/foods/<%=@food.id%>" method="post">
+  <input type="hidden" name="_method" value="put">
+  <input type="text" name="food[name]" value="<%=@food.name%>">
+  <input type="hidden" name="food[veg]" value="false">
+  <input type="checkbox" name="food[veg]" value="true"
+  <%if @food.veg%> checked
+  <%end%>>Vegetarian?
+  <input type="text" name="food[price]" value="<%=@food.price%>">
+  <input type="submit" value="update">
+</form>
