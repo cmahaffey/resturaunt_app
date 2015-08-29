@@ -1,20 +1,47 @@
  <h3>edit parties</h3>
+<div class="row" id="body">
+  <form class="" action="/parties/<%=@party.id%>" method="post">
+    <input type="hidden" name="_method" value="put">
+    <div class="input-field col s6">
 
- <form class="" action="/parties/<%=@party.id%>" method="post">
-   <input type="hidden" name="_method" value="put">
-   <select class="" name="party[server_id]">
-     <% @servers.each do |server| %>
-       <option value="<%= server.id %>">
-         <%= server.name %>
-       </option>
-     <% end %>
-   </select>
-   <input type="text" name="party[table_name]" value="<%=@party.table_name%>">
-    <input type="number" name="party[num_persons]" value="<%=@party.num_persons%>">
-   <input type="hidden" name="party[paid]" value="false">
-   <input type="checkbox" name="party[paid]" value="true"
-     <%if @party.paid%> checked
-     <%end%>
-   > Paid?
-   <input type="submit" value="update">
+      <select class="" name="party[server_id]">
+        <option value="<%=@party.server.id%>" disabled selected>Server</option>
+        <% @servers.each do |server| %>
+          <option value="<%= server.id %>">
+            <%= server.name %>
+          </option>
+        <% end %>
+      </select>
+
+    </div>
+
+    <div class="input-field col s6">
+      <input type="text" name="party[table_name]" value="<%=@party.table_name%>">
+    </div>
+    <div class="input-field col s6">
+      <input type="number" name="party[num_persons]" value="<%=@party.num_persons%>">
+    </div>
+    <div class="input-field col s6">
+      <input type="hidden" name="party[paid]" value="false">
+      <input type="checkbox" class= "filled-in" id="pay" name="party[paid]" value="true"
+        <%if @party.paid%> checked
+        <%end%>
+      >
+      <label for="pay">Paid?</label>
+   </div>
+   <div class="col s12">
+     <input type="submit" value="Update">
+   </div>
  </form>
+</div>
+
+
+
+
+ <footer>
+   <div  class="row valign-wrapper">
+         <a class=" col s4 valign" href="/parties/<%=@party.id%>">Back</a>
+         <a class=" col s4 valign" href="/items/new?party=<%=@party.id%>">Order</a>
+       <a class="col s4 valign" href="/parties/new">New</a>
+   </div>
+ </footer>

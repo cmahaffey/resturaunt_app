@@ -1,20 +1,42 @@
-<h3><%=@server.name%>'s Tables</h3>
-
-<ul>
-  <%@server.parties.each do |party|%>
-  <a href="/parties/<%=party.id%>">
-    <li><%=party.table_name%></a>
-      <!-- pay update button -->
-       </li>
-  <form class="" action="/parties/<%=party.id%>" method="post">
+<header>
+  <form class="right-align" action="servers/:id" method="post">
     <input type="hidden" name="_method" value="delete">
-    <input type="submit" value="Remove">
+    <input class="button top-right" type="submit" value="delete server">
   </form>
+  <h3><%=@server.name%>'s Tables</h3>
+</header>
+
+
+<ul id="body">
+  <div class="row">
+  <%@server.parties.each do |party|%>
+      <div class="col s6 m4 l2">
+        <a class= ""href="/parties/<%=party.id%>">
+          <%if party.items.length==0%>
+            <li class="table new-party ">
+          <%elsif party.items.length>0 && party.paid==false%>
+            <li class="table food-party ">
+          <%else%>
+            <li class="table done-party ">
+          <%end%>
+            <%=party.table_name%></li></a>
+            <!-- pay update button -->
+        <form class="" action="/parties/<%=party.id%>" method="post">
+          <input type="hidden" name="_method" value="delete">
+          <input type="submit" value="Remove">
+        </form>
+        <br>
+      </div>
+
   <%end%>
+  </div>
 </ul>
-<a href="/parties/new?waitstaff=<%= @server.id %>">Add a party</a>
-<a href="/">Back to Servers</a>
-<form class="" action="servers/:id" method="post">
-  <input type="hidden" name="_method" value="delete">
-  <input type="submit" value="delete server">
-</form>
+
+
+<footer>
+  <div  class="row -wrapper">
+        <a class=" col s6 " href="/">Back to Servers</a>
+
+      <a class="col s6 " href="/parties/new?waitstaff=<%= @server.id %>">Add a party</a>
+  </div>
+</footer>

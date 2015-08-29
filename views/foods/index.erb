@@ -1,19 +1,32 @@
 <h3>Menu</h3>
 <ul>
+<div class="row">
+
   <%@foods.each do |food|%>
-    <a href="/foods/<%=food.id%>"><li><%=food.name%>
-    <%if food.veg%>
-      V
-    <%end%>
+      <div class=" col offset-s1 s5 l3 left-align">
+        <a href="/foods/<%=food.id%>"><li>
+          <%=food.name%>
+          <%if food.veg%> V <%end%>
+      </div>
+    <div class="col s5 l3 right-align">
+      $<%=food.price%>
+        </li></a>
+    </div>
 
 
-    <%=food.price%>
-    <form class="" action="/foods/<%=food.id%>" method="post">
-      <input type="hidden" name="_method" value="delete">
-      <input type="submit" value="delete">
-    </form>
-    </li></a>
+
+
+
+
   <%end%>
+  </div>
 </ul>
 
-<a href="/foods/new"> add to the menu</a>
+
+<footer>
+  <div  class="row valign-wrapper">
+      <a class=" col s6 valign" href="/">Back to Servers</a>
+
+      <a class=" col s6 valign" href="/foods/new"> Add to the menu</a>
+  </div>
+</footer>

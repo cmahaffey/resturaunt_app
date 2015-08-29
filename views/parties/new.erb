@@ -1,12 +1,18 @@
-<h3>new party</h3>
-<form  action="/parties" method="post">
-  <input type="hidden" name="party[server_id]" value="<%=@server.id%>">
-  <!-- a selection -->
-  <input type="text" name="party[table_name]" placeholder="table_id">
-  <input type="number" name="party[num_persons]" placeholder="Number of people">
-  <!-- a boolean -->
-  <input type="hidden" name="party[paid]" value="false">
-  <input type="checkbox" name="party[paid]" value="true">Paid?
-  <!-- something something server id? here or via a long chain of stuff in the controller? -->
-  <input type="submit">
-</form>
+<h3>New Party</h3>
+<div class="row">
+  <form  action="/parties" method="post">
+    <input type="hidden" name="party[server_id]" value="<%=@server.id%>">
+    <!-- a selection? -->
+    <div class="input-field col s6 l4">
+        <input type="text" name="party[table_name]" placeholder="Table number">
+    </div>
+    <div class="input-field col s6 l4">
+      <input type="number" name="party[num_persons]" placeholder="Number of people">
+    </div>
+
+
+    <!-- a boolean -->
+    <!-- something something server id? here or via a long chain of stuff in the controller? -->
+    <input type="submit">
+  </form>
+</div>
