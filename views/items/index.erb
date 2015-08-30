@@ -1,18 +1,55 @@
-<h3>items</h3>
+<h3>Reciept</h3>
 <%total=0%>
 <%@items.each { |item| total+=item.food.price }%>
-<ul>
-  <%@items.each do |item|%>
-    <li><%=item.food.name%>  -  <%=item.food.price%></li>
-    <form class="" action="/items/<%=item.id%>" method="post">
-      <input type="hidden" name="_method" value="delete">
-      <input type="submit" value="cancel">
+<div class="row" id=body>
 
-    </form>
-  <%end%>
-</ul>
-<%=total%>
+  <div class= "col s10 offset-s1 reciept-box" >
+    <ul >
+    <div class="col s4 offset-s1 left">
+        Product <br><br>
+      <%@items.each do |item|%>
+        <p class="prices">
+          <%=item.food.name%>
+        </p>
+      <%end%>
+    </div>
+    <div class="col s4 offset-s1 right">
+      Price <br><br>
+      <%@items.each do |item|%>
+        <p class="prices">
+          <%=item.food.price%>
+        </p>
+      <%end%>
+    </div>
+    </ul>
+    <div class="col s9 offset-s2" style="border-bottom:dotted darkgrey 2px">
+    <br>
+    </div>
 
-<h5>25% tip: <%=total*1.25%></h5>
-<h5>20% tip: <%=total*1.2%></h5>
-<h5>15% tip: <%=total*1.15%></h5>
+    <br><br>
+    <p><div class=" tip col s12 center">
+      25% tip: <%=(total*1.25).round(2)%>
+      </div>
+      <div class="  col s12 center">
+      20% tip: <%=(total*1.2).round(2)%>
+
+      </div>
+      <div class=" col s12 center">
+      15% tip: <%=(total*1.15).round(2)%>
+
+    </div></p>
+    <div class="col s5 offset-s1 left">
+      <h5 class="total">Total:</h5>
+    </div>
+    <div class="col s5 offset-s1 right">
+      <h5 class="total"><%=total%></h5>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <div  class="row valign-wrapper">
+      <a class=" col s12 valign " href="/parties/<%=@items[0].party.id%>">Back</a>
+  </div>
+</footer>

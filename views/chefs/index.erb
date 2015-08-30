@@ -2,7 +2,7 @@
 <div class="row" id="body">
 
     <%@chefs.each do |item|%>
-      <div class="col s6 m4 l3 food-prep" data-start-time=<%=item.timestamps%> >
+      <div class="col s6 m4 l3 food-prep" data-start-time="<%=item.created_at%>" >
         <div>
           <h4><%=item.food.name%></h4>
           <p class="descrip">

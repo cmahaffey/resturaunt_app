@@ -27,13 +27,13 @@
                <%end%>
     </h5>
   </div>
-<div class="col s12">
+<div class="col s11 offset-s1">
     <h4 class="lister">Orders:</h4>
 </div>
   <div class="row">
     <ul>
       <%@party.items.each do |item|%>
-        <li >
+        <li class=orders>
           <div class=" col s5 offset-s2">
             <p class="order">
               <%=item.food.name%><br>
@@ -56,9 +56,10 @@
     <%end%>
     </ul>
   </div>
-
+  <div class="center">
+    <a class="button reciept-link"href="/items">Get reciept</a> <br>
+  </div>
 </div>
-<!-- <a href="/items">Get reciept</a> <br>-->
 
 
 
