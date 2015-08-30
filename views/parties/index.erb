@@ -9,15 +9,15 @@
 
 <ul id="body">
   <div class="row">
-  <%@server.parties.each do |party|%>
+  <%@server.parties.reverse_each do |party|%>
       <div class="col s6 m4 l2">
         <a class= ""href="/parties/<%=party.id%>">
-          <%if party.items.length==0%>
-            <li class="table new-party ">
+          <%if party.paid%>
+            <li class="table done-party ">
           <%elsif party.items.length>0 && party.paid==false%>
             <li class="table food-party ">
-          <%else%>
-            <li class="table done-party ">
+          <%elsif party.items.length==0%>
+            <li class="table new-party ">
           <%end%>
             <%=party.table_name%></li></a>
             <!-- pay update button -->

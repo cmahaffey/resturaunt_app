@@ -1,38 +1,56 @@
-<h3>edit Orders</h3>
-<form class="" action="/items/<%=@item.id%>" method="post">
-  <input type="hidden" name="_method" value="put">
-
-  <select class="" name="item[food_id]">
-    <option value="<%=@item.food_id%>">
-      <%=@item.food.name%>
-    </option>
-    <%Food.all.each do |food|%>
-      <%unless food.id==@item.food_id%>
-        <option value="<%=food.id%>">
-          <%=food.name%>
+<h3>Edit Orders</h3>
+<div class="row"id="body">
+  <form class="" action="/items/<%=@item.id%>" method="post">
+    <input type="hidden" name="_method" value="put">
+    <div class="col s6">
+      <h6>Food:</h6>
+      <select class="" name="item[food_id]">
+        <option value="<%=@item.food_id%>">
+          <%=@item.food.name%>
         </option>
-      <%end%>
-    <%end%>
-  </select>
-
-  <select class="" name="item[party_id]">
-    <option value="<%=@item.party_id%>">
-      <%=@item.party.table_name%>
-    </option>
-    <%Party.all.each do |party|%>
-      <%unless party.id==@item.party_id%>
-        <option value="<%=party.id%>">
-          <%=party.table_name%>
+        <%Food.all.each do |food|%>
+          <%unless food.id==@item.food_id%>
+            <option value="<%=food.id%>">
+              <%=food.name%>
+            </option>
+          <%end%>
+        <%end%>
+      </select>
+    </div>
+    <div class="col s6">
+      <h6>Table:</h6>
+      <select class="" name="item[party_id]">
+        <option value="<%=@item.party_id%>">
+          <%=@item.party.table_name%>
         </option>
-      <%end%>
+        <%Party.all.each do |party|%>
+          <%unless party.id==@item.party_id%>
+            <option value="<%=party.id%>">
+              <%=party.table_name%>
+            </option>
+          <%end%>
+        <%end%>
+      </select>
+    </div>
+
+
+
+    <%if @item.description==''%>
+      <input type="text" name="item[description]" placeholder="description">
+    <%else%>
+      <input type="text" name="item[description]"  value=<%=@item.description%>>
     <%end%>
-  </select>
 
-  <%if @item.description==' '%>
-    <input type="text" name="item[description]" placeholder="description">
-  <%else%>
-    <input type="text" name="item[description]"  value=<%=@item.description%>>
-  <%end%>
+    <input type="submit">
+  </form>
+</div>
 
-  <input type="submit">
-</form>
+<footer>
+  <div  class="row valign-wrapper">
+      <a class=" col s6 valign " href="/parties/<%=@item.party.id%>/parties">Back</a>
+      <form class="col s6 edit_del" action="/items/<%=@item.id%>" method="post">
+        <input type="hidden" name="_method" value="delete">
+        <input type="submit" class="edit_del" value="Cancel Order">
+      </form>
+  </div>
+</footer>

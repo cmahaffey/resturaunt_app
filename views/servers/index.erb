@@ -5,12 +5,12 @@
 
 
 <ul id="body">
-  <div class="row">
+  <div class="row ">
     <%@servers.each do |server|%>
         <div class="col s6">
           <a href="/servers/<%=server.id%>/parties"><li class="button"><%=server.name%>
           </li></a>
-          <h6>Parties Waiting: <%=server.parties.length%></h6>
+          <h6 class="spacing">Parties Waiting: <%=server.parties.length%></h6>
         </div>
     <%end%>
   </div>

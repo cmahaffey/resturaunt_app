@@ -1,18 +1,27 @@
 <h3>new order</h3>
 <!-- list orders on bottom, redirect to this page -->
-<form  action="/items" method="post">
-  <input type="hidden" name="item[party_id]" value="<%=@party%>">
-  <!--  something that lists all food types? not sure, that seems tideous and bad ux...
-         buttons?-->
-  <select class="" name="item[food_id]">
-    <%@foods.each do |food|%>
-      <option value="<%=food.id%>">
-        <%=food.name%>
-      </option>
-    <%end%>
-  </select>
-  <!-- <button type="button" name="item[food_id]" value="<%=food.id%>"><%=food.name%></button> -->
+<div class="row"id="body">
+  <form  action="/items" method="post">
+    <input type="hidden" name="item[party_id]" value="<%=@party%>">
+    <!--  something that lists all food types? not sure, that seems tideous and bad ux...
+           buttons?-->
+    <div class="col s6">
+      <select class="" name="item[food_id]">
+        <option value="" disabled selected>Food Item</object>
+        <%@foods.each do |food|%>
+          <option value="<%=food.id%>">
+            <%=food.name%>
+          </option>
+          <!-- <button type="button" name="item[food_id]" value="<%=food.id%>"><%=food.name%></button> -->
+        <%end%>
+      </select>
+    </div>
+    <div class="col s6">
+      <input type="text" name="item[description]" value='' placeholder="description">
+    </div>
 
-  <input type="text" name="item[description]" value=' ' placeholder="description">
-  <input type="submit">
-</form>
+
+
+    <input type="submit">
+  </form>
+</div>

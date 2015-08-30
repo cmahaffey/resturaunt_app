@@ -1,12 +1,26 @@
 <h2><%=@food.name%></h2>
-<h3>Price: <%=@food.price%></h3>
-<h4><%if @food.veg%>
-  Vegetarian
-<%end%>
-</h4>
-<a href="/foods">back to foods</a>
-<a href="/foods/<%=@food.id%>/edit">update</a>
-<form class="" action="/foods/<%=@food.id%>" method="post">
-  <input type="hidden" name="_method" value="delete">
-  <input type="submit" value="remove">
-</form>
+<div class="row"id="body">
+  <div class="col s6">
+    <h4>Price: <%=@food.price%></h4>
+  </div>
+  <div class="col s6">
+    <h4>
+      <%if @food.veg%>
+        Vegetarian
+      <%else%>
+        Not Vegetarian
+      <%end%>
+    </h4>
+  </div>
+  <form class="" action="/foods/<%=@food.id%>" method="post">
+    <input type="hidden" name="_method" value="delete">
+    <input type="submit" value="remove">
+  </form>
+</div>
+<footer>
+  <div  class="row valign-wrapper">
+        <a class=" col s4 valign" href="/foods">Menu</a>
+        <a class=" col s4 valign" href="/foods/<%=@food.id%>/edit">Update</a>
+      <a class="col s4 valign" href="/">Servers</a>
+  </div>
+</footer>

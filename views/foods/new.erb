@@ -1,5 +1,5 @@
-<h3>new food</h3>
-<div class="row">
+<h3>New Menu Item</h3>
+<div class="row" id="body">
   <form class="col s12" action="/foods" method="post">
     <div class="input-field col s12 l4">
       <input type="text" name="food[name]" placeholder="food">
@@ -11,6 +11,13 @@
       <input type="checkbox" class= "filled-in"id="veg"name="food[veg]" value="true"/>
       <label for="veg">Vegetarian?</label>
     </div>
-</div>
-    <input type="submit">
+    <div class="input-field col s12 l4">
+      <input type="submit">
+    </div>
   </form>
+</div>
+<footer>
+  <div  class="row valign-wrapper">
+      <a class="col s12 valign" href="/foods">Back</a>
+  </div>
+</footer>

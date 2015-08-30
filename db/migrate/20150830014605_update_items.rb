@@ -1,4 +1,4 @@
-class CreateItems < ActiveRecord::Migration
+class UpdateItems < ActiveRecord::Migration
   def change
     create_table :items do |t|
       t.integer :party_id
@@ -6,7 +6,7 @@ class CreateItems < ActiveRecord::Migration
       t.integer :chef_id
       t.text :description
       t.boolean :prepared
-      t.timestamps 
+      t.timestamps :integer
     end
   end
 end

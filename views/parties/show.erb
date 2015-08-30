@@ -33,17 +33,25 @@
   <div class="row">
     <ul>
       <%@party.items.each do |item|%>
-        <li>
-          <%=item.food.name%><br>
-          <%unless item.description==' '%>
-            <ul><li><%=item.description%>
-            </li></ul>
+        <li >
+          <div class=" col s5 offset-s2">
+            <p class="order">
+              <%=item.food.name%><br>
+            </p>
+            <%unless item.description==''%>
+              <ul >
+                  <%item.description.split(",").each do |description|%>
+                    <li class= "order-desc">
+                      <%=description%>
+                    </li>
+                  <%end%>
+            </ul>
+          </div>
+          <div class="mods col s4">
+            <a class="button"href="/items/<%=item.id%>/edit">Modify Order</a>
+          </div>
+
           <%end%>
-          <a href="/items/<%=item.id%>/edit">modify</a>
-          <form class="" action="/items/<%=item.id%>" method="post">
-            <input type="hidden" name="_method" value="delete">
-            <input type="submit" value="cancel">
-          </form>
         </li>
     <%end%>
     </ul>

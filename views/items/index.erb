@@ -1,6 +1,6 @@
 <h3>items</h3>
 <%total=0%>
-<%@items.map { |e| total+=e.food.price }%>
+<%@items.each { |item| total+=item.food.price }%>
 <ul>
   <%@items.each do |item|%>
     <li><%=item.food.name%>  -  <%=item.food.price%></li>

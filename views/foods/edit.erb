@@ -1,12 +1,29 @@
-<h3>edit food</h3>
+<h3>Edit Menu Item</h3>
+<div class="row" id="body">
+  <form class="" action="/foods/<%=@food.id%>" method="post">
+    <input type="hidden" name="_method" value="put">
+    <div class="input-field col s12 l4">
+      <input type="text" name="food[name]" value="<%=@food.name%>">
+    </div>
 
-<form class="" action="/foods/<%=@food.id%>" method="post">
-  <input type="hidden" name="_method" value="put">
-  <input type="text" name="food[name]" value="<%=@food.name%>">
-  <input type="hidden" name="food[veg]" value="false">
-  <input type="checkbox" name="food[veg]" value="true"
-  <%if @food.veg%> checked
-  <%end%>>Vegetarian?
-  <input type="text" name="food[price]" value="<%=@food.price%>">
-  <input type="submit" value="update">
-</form>
+    <div class="input-field col s12 l4">
+        <input type="text" name="food[price]" value="<%=@food.price%>">
+    </div>
+    <div class="input-field col s12 l4">
+      <input type="hidden" name="food[veg]" value="false">
+      <input type="checkbox"class= "filled-in"id="veg" name="food[veg]" value="true"
+      <%if @food.veg%> checked
+      <%end%>>
+      <label for="veg">Vegetarian?</label>
+    </div>
+
+    <div class="col s12">
+      <input type="submit" value="Update">
+    </div>
+  </form>
+</div>
+<footer>
+  <div  class="row valign-wrapper">
+      <a class="col s12 valign" href="/foods">Back</a>
+  </div>
+</footer>

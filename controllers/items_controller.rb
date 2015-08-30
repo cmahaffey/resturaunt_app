@@ -32,7 +32,7 @@ class ItemsController < ApplicationController
   end
 
   delete '/:id' do
-    party=Item.find(params[:id]).food
+    party=Item.find(params[:id]).party
     Item.delete(params[:id])
     redirect "/parties/#{ party.id }"
   end

@@ -1,11 +1,26 @@
 <h3>For the Chefs</h3>
-<%@chefs.each do |item|%>
-  <p data-start-time=item.timestamps>
-    <%=item.food.name%> <%=item.description%>
-      <ul>
-        Table: <%=item.party.table_name%>
-      </ul>
-  </p>
+<div class="row" id="body">
 
+    <%@chefs.each do |item|%>
+      <div class="col s6 m4 l3 food-prep" data-start-time=<%=item.timestamps%> >
+        <div>
+          <h4><%=item.food.name%></h4>
+          <p class="descrip">
+              <%=item.description%>
+          </p>
 
-<%end%>
+            <h5>
+              Table: <%=item.party.table_name%>
+            </h5>
+        </div>
+      </div>
+    <%end%>
+
+</div>
+
+<footer>
+  <div  class="row valign-wrapper">
+      <a class="col s6 valign" href="/"> Servers</a>
+      <a class=" col s6 valign" href="/foods">Menu</a>
+  </div>
+</footer>

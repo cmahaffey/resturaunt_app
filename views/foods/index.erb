@@ -1,22 +1,16 @@
 <h3>Menu</h3>
-<ul>
-<div class="row">
+<ul class="menu">
+<div class="row "id="body">
 
   <%@foods.each do |food|%>
-      <div class=" col offset-s1 s5 l3 left-align">
-        <a href="/foods/<%=food.id%>"><li>
+
+        <a href="/foods/<%=food.id%>"><li><div class="menu-item col offset-s1 s5 l3 left-align">
           <%=food.name%>
           <%if food.veg%> V <%end%>
       </div>
-    <div class="col s5 l3 right-align">
+    <div class="menu-item col s5 l3 right-align">
       $<%=food.price%>
-        </li></a>
-    </div>
-
-
-
-
-
+        </div></li></a>
 
   <%end%>
   </div>
